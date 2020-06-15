@@ -34,5 +34,26 @@ fluxctl identity --k8s-fwd-ns flux-cluster
 
 ## Application Management
 
+For a cluster administrator, create another flux to monitor and create applications
 
+```
+kubectl create namespace flux-apps
 
+fluxctl install \
+    --git-user=${GHUSER} \
+    --git-email=${GHUSER}@users.noreply.github.com \
+    --git-url=git@github.com:${GHUSER}/${REPO}.git \
+    --git-path=apps \
+    --git-readonly \
+    --namespace=flux-apps | kubectl apply -f -
+# Above command is the same as: kubectl apply -f ./bootstrap/02-apps-flux.yaml
+
+# Find the SSH key generated when starting flux
+fluxctl identity --k8s-fwd-ns flux-apps
+
+# Again add this as a readonly deployment key in GitHub
+```
+
+Create a folder underneath `apps` for example `./apps/podinfo/` that will contain manifests related to the deployment of the app
+
+Create a matching namespace at the cluster level, for example: `./cluster/namespaces/<name>.yaml`
