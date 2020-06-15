@@ -83,6 +83,9 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: flux
+    namespace: flux-cluster
+  - kind: ServiceAccount
+    name: flux
     namespace: flux-apps
 ---
 apiVersion: apps/v1

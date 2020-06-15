@@ -37,12 +37,17 @@ For a cluster administrator, create another flux to monitor and create applicati
 ```
 kubectl create namespace flux-apps
 
+# This generates the manifest to deploy the application level resources
 fluxctl install \
     --git-url=git@github.com:${GHUSER}/${REPO}.git \
     --git-path=apps \
     --git-readonly \
-    --namespace=flux-apps | kubectl apply -f -
-# Above command is the same as: kubectl apply -f ./bootstrap/02-apps-flux.yaml
+    --namespace=flux-apps > ./bootstrap/02-aps-flux.yaml
+
+# Before applying we must update the ClusterRoleBinding so that the flux-cluster retains access to it's git deploy secret 
++  - kind: ServiceAccount
++    name: flux
++    namespace: flux-cluster
 
 # Find the SSH key generated when starting flux
 fluxctl identity --k8s-fwd-ns flux-apps
