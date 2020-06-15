@@ -297,10 +297,10 @@ spec:
                   - /wait-shutdown
           args:
             - /nginx-ingress-controller
-            - --publish-service=ingress-nginx/ingress-nginx-controller
+            - --publish-service=ingress/ingress-nginx-controller
             - --election-id=ingress-controller-leader
             - --ingress-class=nginx
-            - --configmap=ingress-nginx/ingress-nginx-controller
+            - --configmap=ingress/ingress-nginx-controller
             - --validating-webhook=:8443
             - --validating-webhook-certificate=/usr/local/certificates/cert
             - --validating-webhook-key=/usr/local/certificates/key
@@ -458,7 +458,7 @@ spec:
           args:
             - create
             - --host=ingress-nginx-controller-admission,ingress-nginx-controller-admission.ingress-nginx.svc
-            - --namespace=ingress-nginx
+            - --namespace=ingress
             - --secret-name=ingress-nginx-admission
       restartPolicy: OnFailure
       serviceAccountName: ingress-nginx-admission
@@ -492,7 +492,7 @@ spec:
           args:
             - patch
             - --webhook-name=ingress-nginx-admission
-            - --namespace=ingress-nginx
+            - --namespace=ingress
             - --patch-mutating=false
             - --secret-name=ingress-nginx-admission
             - --patch-failure-policy=Fail
