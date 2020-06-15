@@ -458,7 +458,7 @@ spec:
           imagePullPolicy: IfNotPresent
           args:
             - create
-            - --host=ingress-nginx-controller-admission,ingress-nginx-controller-admission.ingress-nginx.svc
+            - --host=ingress-nginx-controller-admission,ingress-nginx-controller-admission.ingress.svc
             - --namespace=ingress
             - --secret-name=ingress-nginx-admission
       restartPolicy: OnFailure
