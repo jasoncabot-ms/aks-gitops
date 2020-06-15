@@ -184,8 +184,6 @@ spec:
         - --git-branch=master
         - --git-path=cluster/namespaces
         - --git-label=flux
-        - --git-user=jasoncabot-ms
-        - --git-email=jasoncabot-ms@users.noreply.github.com
 
         # Include these two to enable git commit signing
         # - --git-gpg-key-import=/root/gpg-import

@@ -18,8 +18,6 @@ This repository would traditionally be maintained by an operations team
 kubectl create namespace flux-cluster
 
 fluxctl install \
-    --git-user=${GHUSER} \
-    --git-email=${GHUSER}@users.noreply.github.com \
     --git-url=git@github.com:${GHUSER}/${REPO}.git \
     --git-path=cluster \
     --git-readonly \
@@ -40,8 +38,6 @@ For a cluster administrator, create another flux to monitor and create applicati
 kubectl create namespace flux-apps
 
 fluxctl install \
-    --git-user=${GHUSER} \
-    --git-email=${GHUSER}@users.noreply.github.com \
     --git-url=git@github.com:${GHUSER}/${REPO}.git \
     --git-path=apps \
     --git-readonly \
