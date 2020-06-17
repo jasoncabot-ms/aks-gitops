@@ -1,0 +1,17 @@
+name: Check Pull Request Quality
+
+# On any pull request targetting master
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    # Lint all manifests
+    - name: Lint k8s manifest files
+      uses: Azure/k8s-lint@v1
