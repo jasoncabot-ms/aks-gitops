@@ -6,7 +6,7 @@ Basic set up
 
 ```
 export GHUSER=jasoncabot-ms
-export REPO=aks-arc-gitops
+export REPO=aks-gitops
 ```
 
 We start with a cluster level flux that will manage the creation of cluster level resources, such as RBAC, service meshes, namespaces, ingress controllers, monitoring and observability hooks.
