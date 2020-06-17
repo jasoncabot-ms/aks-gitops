@@ -15,3 +15,6 @@ jobs:
     # Lint all manifests
     - name: Lint k8s manifest files
       uses: Azure/k8s-lint@v1
+      manifests: -
+        ./cluster/**
+        ./apps/**
